@@ -1,9 +1,18 @@
 import { Offer } from '../types/offer';
 
+
 export const offers: Offer[] = [
   {
     id: '0',
-    images: 'public/img/apartment-01.jpg',
+    image: 'public/img/apartment-01.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8
+      }
+    },
     title: 'Beautiful & luxurious studio at great location',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: true,
@@ -22,7 +31,15 @@ export const offers: Offer[] = [
 
   {
     id: '1',
-    images: 'public/img/room.jpg',
+    image: 'public/img/room.jpg',
+    city: {
+      name: 'Amsterdam',
+      'location': {
+        'latitude': 52.35514938496378,
+        'longitude': 4.673877537499948,
+        'zoom': 8
+      }
+    },
     title: 'Wood and stone place',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: false,
@@ -41,7 +58,15 @@ export const offers: Offer[] = [
 
   {
     id: '2',
-    images: 'public/img/apartment-02.jpg',
+    image: 'public/img/apartment-02.jpg',
+    city: {
+      name: 'Amsterdam',
+      'location': {
+        'latitude': 52.35514938496378,
+        'longitude': 4.673877537499948,
+        'zoom': 8
+      }
+    },
     title: 'Canal View Prinsengracht',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: false,
@@ -60,7 +85,15 @@ export const offers: Offer[] = [
 
   {
     id: '3',
-    images: 'public/img/apartment-03.jpg',
+    image: 'public/img/apartment-03.jpg',
+    city: {
+      name: 'Amsterdam',
+      'location': {
+        'latitude': 52.35514938496378,
+        'longitude': 4.673877537499948,
+        'zoom': 8
+      }
+    },
     title: 'Nice, cozy, warm big bed apartment',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: false,

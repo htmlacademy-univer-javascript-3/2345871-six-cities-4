@@ -1,12 +1,10 @@
-export type User = {
-  avatar: string;
-  name: string;
-  isPro: boolean;
-};
+import { User } from '../types/user.ts';
+import { City } from '../types/city.ts';
 
 export type Offer = {
   id: string;
-  images: string;
+  image: string;
+  city: City;
   title: string;
   description: string;
   isPremium: boolean;
@@ -19,10 +17,3 @@ export type Offer = {
   isFavorite: boolean;
 };
 
-export type Review = {
-  id: string;
-  date: string;
-  user: User;
-  comment: string;
-  rating: number;
-}
