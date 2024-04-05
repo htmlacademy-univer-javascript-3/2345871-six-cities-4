@@ -15,7 +15,7 @@ type AppScreenProps = {
   offers: Offer[];
 };
 
-function App({cardsNumber, offers,}: AppScreenProps): JSX.Element {
+function App({cardsNumber, offers}: AppScreenProps): JSX.Element {
   const favorites = offers.filter((o) => o.isFavorite);
   return (
     <BrowserRouter>
