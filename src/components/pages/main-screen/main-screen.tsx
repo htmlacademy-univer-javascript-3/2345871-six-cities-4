@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Offer } from '../../../types/offer';
 
 import OffersList from '../../offers-list/offers-list';
+import Map from '../../map/map';
 
 type MainScreenProps = {
   cardsNumber: number;
@@ -98,10 +99,12 @@ function MainScreen({cardsNumber, offers}: MainScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OffersList offers={offers}/>
+              <OffersList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map city={offers[0].city} points={offers} />
+              </section>
             </div>
           </div>
         </div>
