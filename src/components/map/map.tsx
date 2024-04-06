@@ -43,7 +43,7 @@ function Map(props: MapProps): JSX.Element {
     }
   }, [map, points]);
 
-  return <div style={{height: '100px'}} ref={mapRef}></div>;
+  return <div style={{height: '100%'}} ref={mapRef}></div>;
 }
 
 export default Map;
