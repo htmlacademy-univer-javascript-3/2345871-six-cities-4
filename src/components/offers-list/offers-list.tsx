@@ -4,13 +4,16 @@ import OfferCard from '../card/card';
 
 type OffersListProps = {
   offers: Offer[];
+  listType: 'typical' | 'near';
 };
 
-function OffersList({offers}: OffersListProps) {
+function OffersList({offers, listType}: OffersListProps) {
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div
+      className={`${listType === 'typical' ? 'cities__places-list places__list tabs__content' : 'near-places__list places__list'}`}
+    >
       {offers.map((offer) => (
-        <OfferCard key={offer.id} offer={offer}/>
+        <OfferCard key={offer.id} offer={offer} cardType={listType}/>
       ))}
     </div>
   );
