@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../../types/offer';
+import { Offer } from '../../types/offer';
 
-import OffersList from '../../offers-list/offers-list';
-import Map from '../../map/map';
+import OffersList from '../../components/offers-list/offers-list';
+import Map from '../../components/map/map';
 
 type MainScreenProps = {
   cardsNumber: number;
   offers: Offer[];
+  favorites: Offer[];
 }
 
-function MainScreen({cardsNumber, offers}: MainScreenProps): JSX.Element {
+function MainScreen({cardsNumber, offers, favorites}: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -27,13 +28,13 @@ function MainScreen({cardsNumber, offers}: MainScreenProps): JSX.Element {
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
+                    <span className="header__favorite-count">{favorites.length}</span>
                   </a>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
+                  <div className="header__nav-link">
                     <span className="header__signout">Sign out</span>
-                  </a>
+                  </div>
                 </li>
               </ul>
             </nav>
@@ -99,7 +100,7 @@ function MainScreen({cardsNumber, offers}: MainScreenProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OffersList offers={offers} />
+              <OffersList offers={offers} listType={'typical'}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
