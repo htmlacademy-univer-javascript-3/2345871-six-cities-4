@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { Icon, Marker, layerGroup } from 'leaflet';
 import { City } from '../../types/city';
 import { Offer } from '../../types/offer';
-import { URL_MARKER_DEFAULT } from '../constants/constants';
+import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../constants/constants';
 
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
@@ -18,6 +18,16 @@ const defaultCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
+const currentCustomIcon = new Icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40]
+});
+
+function getIconByIndex(index: number): Icon {
+  return index === 0 ? currentCustomIcon : defaultCustomIcon;
+}
+
 function Map(props: MapProps): JSX.Element {
   const {city, points} = props;
   const mapRef = useRef(null);
@@ -26,14 +36,15 @@ function Map(props: MapProps): JSX.Element {
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
-      points.forEach((point) => {
+      points.forEach((point, index) => {
+        const icon = getIconByIndex(index);
         const marker = new Marker({
           lat: point.city.location.latitude,
           lng: point.city.location.longitude
         });
 
         marker
-          .setIcon(defaultCustomIcon)
+          .setIcon(icon)
           .addTo(markerLayer);
       });
 

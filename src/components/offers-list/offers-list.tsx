@@ -7,13 +7,14 @@ type OffersListProps = {
   listType: 'typical' | 'near';
 };
 
-function OffersList({offers, listType}: OffersListProps) {
+function OffersList({ offers, listType }: OffersListProps) {
+  const baseClass = 'places__list';
+  const additionalClass = listType === 'typical' ? 'cities__places-list tabs__content' : 'near-places__list';
+
   return (
-    <div
-      className={`${listType === 'typical' ? 'cities__places-list places__list tabs__content' : 'near-places__list places__list'}`}
-    >
+    <div className={`${additionalClass} ${baseClass}`}>
       {offers.map((offer) => (
-        <OfferCard key={offer.id} offer={offer} cardType={listType}/>
+        <OfferCard key={offer.id} offer={offer} cardType={listType} />
       ))}
     </div>
   );

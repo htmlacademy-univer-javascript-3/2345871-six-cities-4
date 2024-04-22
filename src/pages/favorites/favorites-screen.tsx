@@ -8,14 +8,15 @@ type FavoritesScreenProps = {
 };
 
 function FavoritesScreen({favorites}: FavoritesScreenProps): JSX.Element {
-  const favoritesMap = favorites.reduce(
-    (acc: Record<string, Offer[]>, place: Offer) => {
-      const city = place.city.name;
-      acc[city] = [...(acc[city] ?? []), place];
-      return acc;
-    },
-    {}
-  );
+  const favoritesMap = favorites.reduce((acc, offer) => {
+    const { city: { name: cityName } } = offer;
+    if (!acc[cityName]) {
+      acc[cityName] = [];
+    }
+    acc[cityName].push(offer);
+    return acc;
+  }, {} as Record<string, Offer[]>);
+
   return(
     <div className="page">
       <header className="header">
