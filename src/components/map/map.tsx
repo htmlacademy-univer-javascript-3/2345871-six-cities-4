@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
-import { Icon, Marker, layerGroup } from 'leaflet';
+import { Icon, Marker } from 'leaflet';
 import { City } from '../../types/city';
 import { Offer } from '../../types/offer';
-import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../constants/constants';
+import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT, MapClasses } from '../constants/constants';
 
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
@@ -10,51 +10,61 @@ import 'leaflet/dist/leaflet.css';
 type MapProps = {
   city: City;
   points: Offer[];
+  activeOfferId: number;
+  isMainPage: boolean;
 };
 
-const defaultCustomIcon = new Icon({
+const defaultIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
 
-const currentCustomIcon = new Icon({
+const currentIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 });
 
-function getIconByIndex(index: number): Icon {
-  return index === 0 ? currentCustomIcon : defaultCustomIcon;
-}
 
 function Map(props: MapProps): JSX.Element {
-  const {city, points} = props;
+  const {city, points, activeOfferId, isMainPage} = props;
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
+
   useEffect(() => {
     if (map) {
-      const markerLayer = layerGroup().addTo(map);
-      points.forEach((point, index) => {
-        const icon = getIconByIndex(index);
-        const marker = new Marker({
-          lat: point.city.location.latitude,
-          lng: point.city.location.longitude
-        });
-
-        marker
-          .setIcon(icon)
-          .addTo(markerLayer);
+      map.eachLayer((layer) => {
+        if (layer.options.pane === 'markerPane') {
+          map.removeLayer(layer);
+        }
       });
 
-      return () => {
-        map.removeLayer(markerLayer);
-      };
-    }
-  }, [map, points]);
+      points.forEach((point: Offer) => {
+        const marker = new Marker({
+          lat: point.city.location.latitude,
+          lng: point.city.location.longitude,
+        });
 
-  return <div style={{height: '100%'}} ref={mapRef}></div>;
+        marker.setIcon(
+          activeOfferId !== undefined && point.id === activeOfferId ? currentIcon : defaultIcon
+        )
+          .addTo(map);
+      });
+    }
+  }, [map, points, activeOfferId]);
+
+  useEffect(() => {
+    if (map) {
+      map.flyTo([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+  }, [map, city]);
+
+  return (
+    <section className={isMainPage ? MapClasses.SectionPropertyMapClass : MapClasses.SectionMainMapClass} ref={mapRef} key={city.name}>
+    </section>
+  );
 }
 
 export default Map;

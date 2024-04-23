@@ -9,7 +9,10 @@ function useMap(mapRef: React.MutableRefObject<HTMLElement | null>, city: City):
   useEffect(() => {
     if (mapRef.current && !mapInitialized.current) {
       const mapInstance = new Map(mapRef.current, {
-        center: { lat: city.location.latitude, lng: city.location.longitude },
+        center: {
+          lat: city.location.latitude,
+          lng: city.location.longitude
+        },
         zoom: city.location.zoom
       });
 
@@ -22,10 +25,14 @@ function useMap(mapRef: React.MutableRefObject<HTMLElement | null>, city: City):
       mapInitialized.current = true;
     }
 
-    return () => {
-      map?.remove();
-    };
-  }, [mapRef, city, map]);
+  }, [mapRef, city.location]);
+
+  useEffect(() => {
+    if (map && mapRef.current) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map, city.location]);
 
   return map;
 }

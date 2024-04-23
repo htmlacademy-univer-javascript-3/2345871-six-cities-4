@@ -3,8 +3,8 @@ import { Offer } from '../types/offer';
 
 export const offers: Offer[] = [
   {
-    id: '0',
-    image: 'public/img/apartment-01.jpg',
+    id: 1,
+    image: 'img/apartment-01.jpg',
     city: {
       name: 'Amsterdam',
       location: {
@@ -16,22 +16,22 @@ export const offers: Offer[] = [
     title: 'Beautiful & luxurious studio at great location',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: true,
-    type: 'Apartment',
+    type: 'apartment',
     rating: 4.8,
     bedrooms: 3,
     maxAdults: 4,
     price: 120,
     owner: {
-      avatar: 'public/img/avatar-angelina.jpg',
-      name: 'Angelina',
+      avatar: 'img/avatar-max.jpg',
+      name: 'Max',
       isPro: true
     },
     isFavorite: true,
   },
 
   {
-    id: '1',
-    image: 'public/img/room.jpg',
+    id: 2,
+    image: 'img/room.jpg',
     city: {
       name: 'Amsterdam',
       'location': {
@@ -43,13 +43,13 @@ export const offers: Offer[] = [
     title: 'Wood and stone place',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: false,
-    type: 'Room',
+    type: 'room',
     rating: 3,
     bedrooms: 1,
     maxAdults: 2,
     price: 80,
     owner: {
-      avatar: 'public/img/avatar-angelina.jpg',
+      avatar: 'img/avatar-angelina.jpg',
       name: 'Angelina',
       isPro: true
     },
@@ -57,8 +57,8 @@ export const offers: Offer[] = [
   },
 
   {
-    id: '2',
-    image: 'public/img/apartment-02.jpg',
+    id: 3,
+    image: 'img/apartment-02.jpg',
     city: {
       name: 'Amsterdam',
       'location': {
@@ -70,13 +70,13 @@ export const offers: Offer[] = [
     title: 'Canal View Prinsengracht',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: false,
-    type: 'Apartment',
+    type: 'apartment',
     rating: 4,
     bedrooms: 3,
     maxAdults: 4,
     price: 132,
     owner: {
-      avatar: 'public/img/avatar-angelina.jpg',
+      avatar: 'img/avatar-angelina.jpg',
       name: 'Angelina',
       isPro: true
     },
@@ -84,8 +84,8 @@ export const offers: Offer[] = [
   },
 
   {
-    id: '3',
-    image: 'public/img/apartment-03.jpg',
+    id: 4,
+    image: 'img/apartment-03.jpg',
     city: {
       name: 'Amsterdam',
       'location': {
@@ -97,16 +97,71 @@ export const offers: Offer[] = [
     title: 'Nice, cozy, warm big bed apartment',
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     isPremium: false,
-    type: 'Apartment',
+    type: 'apartment',
     rating: 4.8,
     bedrooms: 3,
     maxAdults: 4,
     price: 180,
     owner: {
-      avatar: 'public/img/avatar-angelina.jpg',
-      name: 'Angelina',
+      avatar: 'img/avatar-max.jpg',
+      name: 'Max',
       isPro: true
     },
     isFavorite: true,
   },
+
+  {
+    id: 5,
+    image: 'img/apartment-02.jpg',
+    city: {
+      name: 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.35222,
+        'zoom': 10
+      }
+    },
+    title: 'Beautiful & luxurious studio at great location',
+    description: '',
+    isPremium: false,
+    type: 'apartment',
+    rating: 4,
+    bedrooms: 2,
+    maxAdults: 1,
+    price: 120,
+    owner: {
+      avatar: 'img/avatar-max.jpg',
+      name: 'Max',
+      isPro: true
+    },
+    isFavorite: true,
+  },
+
+  {
+    id: 6,
+    image: 'img/apartment-03.jpg',
+    city: {
+      name: 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.123456,
+        'zoom': 10
+      }
+    },
+    title: 'Beautiful & luxurious studio at great location',
+    description: '',
+    isPremium: false,
+    type: 'apartment',
+    rating: 4,
+    bedrooms: 2,
+    maxAdults: 1,
+    price: 120,
+    owner: {
+      avatar: 'img/avatar-max.jpg',
+      name: 'Max',
+      isPro: true
+    },
+    isFavorite: true,
+  },
+
 ];
