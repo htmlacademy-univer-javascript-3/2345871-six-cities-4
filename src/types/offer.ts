@@ -2,7 +2,7 @@ import { User } from '../types/user.ts';
 import { City } from '../types/city.ts';
 
 export type Offer = {
-  id: string;
+  id: number;
   image: string;
   city: City;
   title: string;

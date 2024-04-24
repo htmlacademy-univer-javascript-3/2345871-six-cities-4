@@ -2,6 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../constants/constants';
 import { Offer } from '../../types/offer';
 import { Review } from '../../types/review.ts';
+import { useAppDispatch, useAppSelector } from '../../hooks/index.ts';
+import { listFilling } from '../../store/action.ts';
+
 
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites/favorites-screen';
@@ -12,19 +15,21 @@ import PrivateRoute from '../private-route/private-route';
 
 
 type AppScreenProps = {
-  cardsNumber: number;
-  offers: Offer[];
   reviews: Review[];
 };
 
-function App({cardsNumber, offers, reviews}: AppScreenProps): JSX.Element {
+function App({reviews}: AppScreenProps): JSX.Element {
+  const offers: Offer[] = useAppSelector((state) => state.offers);
   const favorites = offers.filter((o) => o.isFavorite);
+  const dispatch = useAppDispatch();
+  dispatch(listFilling());
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen cardsNumber={cardsNumber} offers={offers} favorites={favorites}/>}
+          element={<MainScreen favorites={favorites}/>}
         />
         <Route
           path={AppRoute.Login}
