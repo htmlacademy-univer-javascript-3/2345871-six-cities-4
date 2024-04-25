@@ -2,36 +2,37 @@ import { Offer } from '../../types/offer';
 import { Link } from 'react-router-dom';
 import { CARD_WIDTH, CARD_HEIGHT, BOOKMARK_ICON_WIDTH, BOOKMARK_ICON_HEIGHT } from '../constants/constants';
 import { getRating } from '../../utils';
+import { useAppDispatch } from '../../hooks/index.ts';
+import { currentMarker } from '../../store/action.ts';
 
 
 type OfferCardProps = {
   offer: Offer;
   cardType: 'typical' | 'near';
-  setActiveOfferId(id:number): void;
 };
 
-function OfferCard({offer, cardType, setActiveOfferId}: OfferCardProps): JSX.Element {
+function OfferCard({offer, cardType}: OfferCardProps): JSX.Element {
   const {
-    id, image, title, /*description,*/ isPremium, type, rating, /*bedrooms,*/ price, /*owner,*/ isFavorite
+    id,
+    image,
+    title,
+    /*description,*/
+    isPremium,
+    type,
+    rating,
+    /*bedrooms,*/
+    price,
+    /*owner,*/
+    isFavorite
   } = offer;
 
   const cardClass = cardType === 'typical' ? 'cities__card place-card' : 'near-places__card place-card';
 
-  const handleMouseEnter = () => {
-    if (setActiveOfferId) {
-      setActiveOfferId(id);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (setActiveOfferId) {
-      setActiveOfferId(0);
-    }
-  };
+  const dispatch = useAppDispatch();
 
   return (
     <Link to={`/offer/${id}`} state={offer}>
-      <article className={`${cardClass}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <article className={`${cardClass}`} onMouseEnter={() => dispatch(currentMarker({id}))} onMouseLeave={() => dispatch(currentMarker(null))} >
         {isPremium && (
           <div className="place-card__mark">
             <span>Premium</span>
