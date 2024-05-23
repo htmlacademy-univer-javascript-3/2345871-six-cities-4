@@ -1,6 +1,7 @@
 import { User } from '../types/user.ts';
 import { City } from '../types/city.ts';
 import { Location } from '../types/location.ts';
+import { Host } from './host.ts';
 
 export type Offer = {
   id: string;
@@ -19,3 +20,11 @@ export type Offer = {
   location: Location;
 };
 
+export type ExtendedOffer = Omit<Offer, 'previewImage'> & {
+  description: string;
+  bedrooms: number;
+  goods: string[];
+  host: Host;
+  maxAdults: number;
+  images: string[];
+}
