@@ -29,7 +29,7 @@ export const initializeAPI = (): AxiosInstance => {
     const token = retrieveToken();
 
     if (token && config.headers) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers['x-token'] = token;
     }
 
     return config;
