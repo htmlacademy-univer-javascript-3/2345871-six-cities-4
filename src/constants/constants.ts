@@ -30,6 +30,9 @@ export const LOGIN_LOGO_HEIGHT = '41';
 export const FAVORITES_LOGO_WIDTH = '64';
 export const FAVORITES_LOGO_HEIGHT = '33';
 
+export const SORTING_WIDTH = '7';
+export const SORTING_HEIGHT = '4';
+
 export enum MapClasses {
   SectionMainMapClass = 'cities__map map',
   SectionPropertyMapClass = 'offer__map map',
@@ -49,9 +52,10 @@ export const SORT_TYPES = {
   3: 'Top rated first',
 };
 
-export const SORTING_WIDTH = '7';
+export const TIMEOUT_SHOW_ERROR = 2000;
 
-export const SORTING_HEIGHT = '4';
-
-export const TIMEOUT_SHOW_ERROR = 10000;
-
+export enum StateKey {
+  AppSettings = 'APPSETTINGS',
+  Offers = 'OFFERS',
+  User = 'USER',
+}
