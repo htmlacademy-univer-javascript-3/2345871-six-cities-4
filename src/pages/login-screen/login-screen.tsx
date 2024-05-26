@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { FormEvent, useRef } from 'react';
 import { useAppDispatch } from '../../hooks';
-import { login } from '../../store/api-actions';
-import { LOGIN_LOGO_HEIGHT, LOGIN_LOGO_WIDTH } from '../../constants/constants';
+import { loginAction } from '../../store/api-actions';
+import { LOGIN_LOGO_HEIGHT, LOGIN_LOGO_WIDTH, citiesForRandomString } from '../../constants/constants';
+import { changeCity } from '../../store/app-settings-slice/app-settings-slice';
 
 function LoginScreen(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -15,12 +16,19 @@ function LoginScreen(): JSX.Element {
 
     if (loginRef.current !== null && passwordRef.current !== null) {
       dispatch(
-        login({
+        loginAction({
           email: loginRef.current.value,
           password: passwordRef.current.value,
         })
       );
     }
+  };
+
+  const getRandomCity = () => citiesForRandomString[Math.floor(Math.random() * citiesForRandomString.length)];
+
+  const newCityName = getRandomCity();
+  const handleCityClick = () => {
+    dispatch(changeCity(newCityName));
   };
 
   return(
@@ -55,8 +63,8 @@ function LoginScreen(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link to="/" className="locations__item-link">
-                <span>Amsterdam</span>
+              <Link to="/" className="locations__item-link" onClick={handleCityClick}>
+                <span>{newCityName}</span>
               </Link>
             </div>
           </section>
