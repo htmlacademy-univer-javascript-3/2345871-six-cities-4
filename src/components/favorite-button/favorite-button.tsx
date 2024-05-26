@@ -36,10 +36,9 @@ function AddToFavouritesButton(props: AddToFavouritesButtonProps): JSX.Element {
 
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
-  // Update isFavorite state when initialFavoriteStatus prop changes
   useEffect(() => {
     setIsFavorite(initialFavoriteStatus);
-  }, [initialFavoriteStatus, id]); // Include id in dependency array to handle id change
+  }, [initialFavoriteStatus, id]);
 
   const handleBookmarkClick = async () => {
     if (authorizationStatus !== AuthorizationStatus.Auth) {
