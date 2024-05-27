@@ -5,7 +5,6 @@ type ListFavoritesProps = {
   favorites: Offer[];
 }
 
-
 function ListFavorites({favorites}: ListFavoritesProps): JSX.Element {
   const favoritesMap = favorites.reduce(
     (acc: Record<string, Offer[]>, place: Offer) => {

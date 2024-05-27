@@ -1,6 +1,6 @@
 import { Offer } from '../../types/offer';
 import { Link } from 'react-router-dom';
-import { CARD_WIDTH, BOOKMARK_ICON_WIDTH, BOOKMARK_ICON_HEIGHT } from '../../constants/constants.ts';
+import { Card, Bookmark } from '../../constants/constants.ts';
 import { getRating } from '../../utils';
 import { useAppDispatch } from '../../hooks/index.ts';
 import { setCurrentMarker } from '../../store/offers-slice/offers-slice.ts';
@@ -40,7 +40,7 @@ function OfferCard({offer, cardType}: OfferCardProps): JSX.Element {
           </div>
         )}
         <div className="cities__image-wrapper place-card__image-wrapper">
-          <img className="place-card__image" src={previewImage} width={CARD_WIDTH} height={CARD_WIDTH}
+          <img className="place-card__image" src={previewImage} width={Card.Size} height={Card.Size}
             alt="Place image"
           />
         </div>
@@ -53,8 +53,8 @@ function OfferCard({offer, cardType}: OfferCardProps): JSX.Element {
             <FavoriteButton
               id={id}
               isFavorite={isFavorite}
-              iconWidth={BOOKMARK_ICON_WIDTH}
-              iconHeight={BOOKMARK_ICON_HEIGHT}
+              iconWidth={Bookmark.Width}
+              iconHeight={Bookmark.Height}
               buttonClass="place-card__bookmark-button"
               activeClass="place-card__bookmark-button--active"
               iconClass="place-card__bookmark-icon"

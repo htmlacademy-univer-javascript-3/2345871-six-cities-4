@@ -16,6 +16,7 @@ const AVATAR_MARGIN_RIGHT = '8px';
 const AVATAR_BORDER_RADIUS = '50%';
 
 function Header({favorites}: HeaderProps): JSX.Element {
+
   const dispatch = useAppDispatch();
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const userEmail = getEmail();

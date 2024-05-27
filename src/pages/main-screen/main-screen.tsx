@@ -22,6 +22,7 @@ function MainScreen({favorites, city}: MainScreenProps): JSX.Element {
     () => offers.filter((offer) => offer.city.name === city),
     [offers, city]
   );
+
   const currentCity = currentCityOffers.length > 0 ? currentCityOffers[0].city : offers[0].city;
 
   return (

@@ -17,26 +17,38 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN'
 }
 
-export const URL_MARKER_DEFAULT = '/img/pin.svg';
-export const URL_MARKER_CURRENT = '/img/pin-active.svg';
+export const enum Card {
+  Size = 260
+}
 
-export const CARD_WIDTH = 260;
-export const CARD_HEIGHT = 260;
+export const enum Bookmark {
+  Width = 18,
+  Height = 19
+}
 
-export const BOOKMARK_ICON_WIDTH = 18;
-export const BOOKMARK_ICON_HEIGHT = 19;
+export enum Avatar {
+  Size = 54
+}
 
-export const AVATAR_WIDTH = 54;
-export const AVATAR_HEIGHT = 54;
+export enum LoginLogo {
+  Width = 81,
+  Height = 41
+}
 
-export const LOGIN_LOGO_WIDTH = 81;
-export const LOGIN_LOGO_HEIGHT = 41;
+export enum FavoritesLogo {
+  Width = 64,
+  Height = 33
+}
 
-export const FAVORITES_LOGO_WIDTH = 64;
-export const FAVORITES_LOGO_HEIGHT = 33;
+export enum Sorting {
+  Width = 7,
+  Height = 4
+}
 
-export const SORTING_WIDTH = 7;
-export const SORTING_HEIGHT = 4;
+export enum URL {
+  Default = '/img/pin.svg',
+  Current = '/img/pin-active.svg'
+}
 
 export enum MapClasses {
   SectionMainMapClass = 'cities__map map',
