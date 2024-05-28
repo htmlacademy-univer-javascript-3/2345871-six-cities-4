@@ -19,10 +19,11 @@ import HistoryRouter from '../history-router/history-router.tsx';
 
 function App(): JSX.Element {
 
-  const favorites: Offer[] = useAppSelector(getFavorites);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const loadingOffers = useAppSelector(getOffersLoadingStatus);
+  const favorites: Offer[] = useAppSelector(getFavorites);
   const city = useAppSelector(getCity);
+
   if (authorizationStatus === AuthorizationStatus.Unknown || loadingOffers) {
     return <LoadingScreen/>;
   }

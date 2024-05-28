@@ -15,9 +15,7 @@ type CityProps = {
 
 const City = ({name, cityChangeName, isActive}: CityProps): JSX.Element => (
   <li className="locations__item" onClick={() => cityChangeName(name)}>
-    <a className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`}
-      href="#"
-    >
+    <a className={`locations__item-link tabs__item ${isActive ? 'tabs__item--active' : ''}`} href="#">
       <span>{name}</span>
     </a>
   </li>
@@ -26,9 +24,11 @@ const City = ({name, cityChangeName, isActive}: CityProps): JSX.Element => (
 function CitiesList({cities}: CitiesListProps): JSX.Element {
   const dispatch = useAppDispatch();
   const currentCity = useAppSelector(getCity);
+
   const handleCityChange = (city: string) => {
     dispatch(changeCity(city));
   };
+
   return (
     <ul className="locations__list tabs__list">
       {cities.map((city) => (
