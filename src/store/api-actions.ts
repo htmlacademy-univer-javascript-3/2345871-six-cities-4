@@ -147,7 +147,7 @@ export const loginAction = createAsyncThunk<void, AuthData, {
       dispatch(fetchFavoritesAction());
       dispatch(requireAuthorization(AuthorizationStatus.Auth));
       dispatch(redirectToRoute(AppRoute.Main));
-      const {data } = await api.get<UserData>(APIRoute.Login);
+      const {data} = await api.get<UserData>(APIRoute.Login);
       saveProfilePicture(data.avatarUrl);
     },
   );
