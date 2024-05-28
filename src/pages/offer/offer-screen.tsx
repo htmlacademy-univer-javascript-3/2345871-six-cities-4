@@ -14,7 +14,7 @@ import AddToFavoritesButton from '../../components/favorite-button/favorite-butt
 
 import { Offer } from '../../types/offer.ts';
 import { Points } from '../../types/points.ts';
-import { AuthorizationStatus, BOOKMARK_ICON_WIDTH, BOOKMARK_ICON_HEIGHT } from '../../constants/constants.ts';
+import { AuthorizationStatus, Bookmark } from '../../constants/constants.ts';
 import { OffersListMemo } from '../../components/offers-list/offers-list.tsx';
 
 type OfferScreenProps = {
@@ -76,8 +76,8 @@ function OfferScreen({favorites}: OfferScreenProps): JSX.Element {
               <AddToFavoritesButton
                 id={offerInfo.id}
                 isFavorite={offerInfo.isFavorite}
-                iconWidth={BOOKMARK_ICON_WIDTH}
-                iconHeight={BOOKMARK_ICON_HEIGHT}
+                iconWidth={Bookmark.Width}
+                iconHeight={Bookmark.Height}
                 buttonClass="place-card__bookmark-button"
                 activeClass="place-card__bookmark-button--active"
                 iconClass="place-card__bookmark-icon"
