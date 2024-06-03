@@ -11,8 +11,8 @@ test('should not show review form to an unauthorized user', async ({ page }) => 
 test('should send review by authorized user', async ({ page }) => {
   const email = 'mercymainer228@overwatch.ru';
   const password = 'top1234'
-  const RATING = 'perfect';
-  const COMMENT = `But you did not have to cut me off...
+  const rating = 'perfect';
+  const comment = `But you did not have to cut me off...
     Make out like it never happened and that we were nothing...
     And I don't even need your love...
     But you treat me like a stranger, and that feels so rough...`;
@@ -29,8 +29,8 @@ test('should send review by authorized user', async ({ page }) => {
   await page.waitForSelector('.reviews');
   await expect(page.locator('.reviews__form')).toBeVisible();
 
-  await page.fill('[name="review"]', COMMENT);
-  await page.getByTitle(RATING).click();
+  await page.fill('[name="review"]', comment);
+  await page.getByTitle(rating).click();
   expect(page.locator('button[type="submit"]')).toBeEnabled();
 
   await Promise.all([
@@ -42,6 +42,6 @@ test('should send review by authorized user', async ({ page }) => {
 
   const reviewText = await page.locator('.reviews__text').first().textContent();
   const reviewAuthor = (await page.locator('.reviews__user-name').first().textContent())?.trim();
-  expect(reviewText).toBe(COMMENT);
+  expect(reviewText).toBe(comment);
   expect(reviewAuthor).toBe('mercymainer228');
 });
