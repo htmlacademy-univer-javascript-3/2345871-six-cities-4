@@ -23,6 +23,7 @@ test('attempts by an unauthorized user to add to favorites', async ({ page }) =>
 test('adding and deleting to favorites by an authorized user', async ({ page }) => {
   const email = 'mercymainer228@overwatch.ru';
   const password = 'top1'
+
   const isFavorite = async () => {
     const favouritesButtonClassList = await page.locator('.bookmark-button').first().evaluate((el) => [...el.classList]);
     return favouritesButtonClassList.includes('place-card__bookmark-button--active');
