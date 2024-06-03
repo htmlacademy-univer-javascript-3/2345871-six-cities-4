@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { FormEvent, useRef } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
-import { LoginLogo, citiesForRandomString } from '../../constants/constants';
+import { LoginLogo, citiesForRandomString, AppRoute } from '../../constants/constants';
 import { changeCity } from '../../store/app-settings-slice/app-settings-slice';
 
 function LoginScreen(): JSX.Element {
@@ -33,9 +33,9 @@ function LoginScreen(): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="#">
+              <Link to={AppRoute.Main} className="header__logo-link">
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={LoginLogo.Width} height={LoginLogo.Height} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
